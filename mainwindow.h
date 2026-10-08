@@ -38,9 +38,18 @@ protected:
 private slots:
     void on_pushButton_clicked();
     void on_pushButton_2_clicked();
+    void on_buttonBack_clicked();
+    void on_buttonPickColor_clicked();
+    void on_buttonResetColor_clicked();
+    void on_buttonPlayAgain_clicked();
+    void on_buttonMenu_clicked();
     void gameTick();
 
 private:
+    void loadPreferences();              // read best score + snake color from disk
+    void saveBestScore();                // write best score to disk
+    void saveSnakeColor();               // write snake body color to disk
+    void updateColorPreview();           // refresh the swatch on the Settings page
     void startGame();
     void endGame();
     void spawnFood();
@@ -54,5 +63,9 @@ private:
     QPoint m_nextDir;        // direction requested by the player
     QPoint m_food;
     int m_score = 0;
+    int m_bestScore = 0;     // highest score ever (saved between runs)
+    bool m_newBest = false;  // true if the current game beat the old best
+    QColor m_snakeBody;      // snake body color (saved between runs)
+    int m_tickMs = 500;      // current delay per move; shrinks as the snake eats
 };
 #endif // MAINWINDOW_H

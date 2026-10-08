@@ -9,7 +9,7 @@ GroundLabel::GroundLabel(int squareSidePixels, QWidget *parent)
     : QLabel(parent)
     , m_squareSide(squareSidePixels > 0 ? squareSidePixels : 40)
     , m_defaultLight(QColor(238, 238, 210)) // Default Cream
-    , m_defaultDark(QColor(118, 150, 86))   // Default Green
+    , m_defaultDark(QColor(18, 150, 86))   // Default Green
 {
 }
 
@@ -90,4 +90,4 @@ void GroundLabel::paintEvent(QPaintEvent *event)
             painter.drawRect(c * m_squareSide, r * m_squareSide, m_squareSide, m_squareSide);
         }
     }
-}
+}
